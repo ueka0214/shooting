@@ -1,0 +1,5 @@
+package application.module;
+
+public enum ActorID {
+	ACTOR_PLAYER, ACTOR_PLAYER_BULLET, ACTOR_ENEMY,ACTOR_ENEMY_BULLET,ACTOR_ENEMY_SPECIAL_BULLET
+}
