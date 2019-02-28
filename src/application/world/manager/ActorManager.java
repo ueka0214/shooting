@@ -3,19 +3,15 @@ package application.world.manager;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
-
 import application.actor.Actor;
 
 // Actor管理者
 // 同一の種類のActorを管理する
 public class ActorManager {
 	private ArrayList<Actor> actors = new ArrayList<Actor>();
-	private JFrame frame = null;// フレーム
-	private boolean isRemove = false;
+	private boolean isRemove = false;// 削除処理が終わったか
 
-	public ActorManager(JFrame frame) {
-		this.frame = frame;
+	public ActorManager() {
 	}
 
 	// アクターの追加

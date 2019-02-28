@@ -9,11 +9,11 @@ public class CreatePattern {
 	}
 	// 読み込みの始点
 	public int getStart() {
-		return csv.geti(row, 0);
+		return csv.geti(row, 0)-1;
 	}
 	// 読み込みの終点
 	public int getFinish() {
-		return csv.geti(row, 1);
+		return csv.geti(row, 1)-1;
 	}
 	// 次回までの生成間隔を取得
 	public int getTime() {

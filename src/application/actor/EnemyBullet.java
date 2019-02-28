@@ -2,7 +2,7 @@ package application.actor;
 
 import java.awt.Graphics;
 
-import application.module.ActorID;
+import application.module.ImageID;
 import application.module.Vector2;
 import application.world.IWorld;
 import application.world.manager.ImageManager;
@@ -15,7 +15,7 @@ public class EnemyBullet extends Actor {
 	protected double aliveTimer = 180.0;// 生存時間
 
 	public EnemyBullet(IWorld world, Vector2 position) {
-		super(world, position, WIDTH, HEIGHT,ImageManager.getImage(ActorID.ACTOR_ENEMY_BULLET));
+		super(world, position, WIDTH, HEIGHT,ImageManager.getImage(ImageID.ACTOR_ENEMY_BULLET));
 		velocity.x = 0;
 		velocity.y = +1.0 * SPEED;
 	}

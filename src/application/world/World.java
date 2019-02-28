@@ -6,26 +6,26 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import application.actor.Actor;
+import application.actor.Player;
 import application.module.ActorID;
-import application.module.Input;
+import application.module.ScoreAction;
 
 public class World extends JPanel implements IWorld {
 
 	private WorldActor actors;// アクター管理者統括
-	private Actor player = null;// プレイヤー
+	private Player player = null;// プレイヤー
 	private JFrame frame = null;// フレーム
-	private Input input = null;// 入力
 	private EnemyFactory factory = null;// エネミー工場
 	private int score = 0;//スコア
+	private ScoreAction action;
 
 	// コンストラクタ
-	public World(JFrame frame, Input input) {
+	public World(JFrame frame) {
 		this.frame = frame;
-		this.input = input;
-		actors = new WorldActor(frame);
+		actors = new WorldActor();
 		// 工場のインスタンス化
 		factory = new EnemyFactory(this);
-
+		action = new ScoreAction();
 	}
 
 	// アクターの追加
@@ -40,7 +40,7 @@ public class World extends JPanel implements IWorld {
 	}
 
 	// プレイヤーの追加
-	public void addPlayer(Actor actor) {
+	public void addPlayer(Player actor) {
 		if (player == null) {
 			player = actor;
 			add(ActorID.ACTOR_PLAYER, actor);
@@ -50,6 +50,7 @@ public class World extends JPanel implements IWorld {
 	// スコアの追加
 	public void addScore(int score) {
 		this.score += score;
+		scoreAction();
 	}
 
 	// 初期化処理
@@ -77,6 +78,11 @@ public class World extends JPanel implements IWorld {
 	// スコアの取得
 	public int getScore() {
 		return score;
+	}
+
+	// スコアが一定になると処理を行う
+	private void scoreAction() {
+		action.action(score, player);
 	}
 
 }

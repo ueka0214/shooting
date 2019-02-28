@@ -2,7 +2,7 @@ package application.actor;
 
 import java.awt.Graphics;
 
-import application.module.ActorID;
+import application.module.ImageID;
 import application.module.Vector2;
 import application.world.IWorld;
 import application.world.manager.ImageManager;
@@ -14,10 +14,14 @@ public class Bullet extends Actor {
 	private static final int HEIGHT = 8;// 高さ
 	private double aliveTimer = 180.0;// 生存時間
 
+	public Bullet(IWorld world, Vector2 position, Vector2 vec) {
+		super(world, position, WIDTH, HEIGHT, ImageManager.getImage(ImageID.ACTOR_PLAYER_BULLET));
+		velocity.x = vec.x * SPEED;
+		velocity.y = vec.y * SPEED;
+	}
+
 	public Bullet(IWorld world, Vector2 position) {
-		super(world, position, WIDTH, HEIGHT,ImageManager.getImage(ActorID.ACTOR_PLAYER_BULLET));
-		velocity.x = 0;
-		velocity.y = -1.0 * SPEED;
+		this(world, position, new Vector2(0, -1.0));
 	}
 
 	@Override
@@ -36,7 +40,6 @@ public class Bullet extends Actor {
 	@Override
 	public void draw(Graphics g) {
 		super.paintComponents(g);
-		//g.fillRect((int) position.x, (int) position.y, WIDTH, HEIGHT);
 		g.drawImage(img, (int) position.x, (int) position.y, this);
 	}
 

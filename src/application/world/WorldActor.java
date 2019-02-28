@@ -3,8 +3,6 @@ package application.world;
 import java.awt.Graphics;
 import java.util.HashMap;
 
-import javax.swing.JFrame;
-
 import application.actor.Actor;
 import application.module.ActorID;
 import application.world.manager.ActorManager;
@@ -13,21 +11,19 @@ import application.world.manager.ActorManager;
 public class WorldActor{
 	// アクターの種類毎にアクター管理者を管理する
 	HashMap<ActorID, ActorManager> managers = new HashMap<ActorID, ActorManager>();
-	private JFrame frame = null;// フレーム
 
-	public WorldActor(JFrame frame) {
-		this.frame = frame;
+	public WorldActor() {
 	}
 
 
 	// 初期化処理
 	public void initialize() {
 		clear();
-		managers.put(ActorID.ACTOR_PLAYER, new ActorManager(frame));
-		managers.put(ActorID.ACTOR_PLAYER_BULLET, new ActorManager(frame));
-		managers.put(ActorID.ACTOR_ENEMY, new ActorManager(frame));
-		managers.put(ActorID.ACTOR_ENEMY_BULLET, new ActorManager(frame));
-		managers.put(ActorID.ACTOR_ENEMY_SPECIAL_BULLET, new ActorManager(frame));
+		managers.put(ActorID.ACTOR_PLAYER, new ActorManager());
+		managers.put(ActorID.ACTOR_PLAYER_BULLET, new ActorManager());
+		managers.put(ActorID.ACTOR_ENEMY, new ActorManager());
+		managers.put(ActorID.ACTOR_ENEMY_BULLET, new ActorManager());
+		managers.put(ActorID.ACTOR_ENEMY_SPECIAL_BULLET, new ActorManager());
 	}
 
 	// 更新処理

@@ -5,20 +5,21 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import application.actor.Player;
-import application.main.GameMain;
+import application.module.ImageID;
 import application.module.Input;
 import application.module.SceneID;
-import application.module.Vector2;
 import application.world.World;
+import application.world.manager.ImageManager;
 
-public class TitleScene extends JPanel implements IScene {
+public class ExplanationScene extends JPanel implements IScene {
+
 	private World world;// 世界
 	private Input input;// 入力
 	private JFrame frame;// フレーム
 	private boolean endFlg = false;
+	private double frameTimer = 120;
 
-	public TitleScene(World world, Input input,JFrame frame) {
+	public ExplanationScene(World world, Input input,JFrame frame) {
 		this.world = world;
 		this.input = input;
 		this.frame = frame;
@@ -27,15 +28,15 @@ public class TitleScene extends JPanel implements IScene {
 
 	@Override
 	public void initialize() {
-		// プレイヤーの追加
-		Player player = new Player(world, input, new Vector2(300, 500));
-		world.addPlayer(player);
+		// TODO 自動生成されたメソッド・スタブ
+
 	}
 
 	@Override
 	public void update() {
+		frameTimer--;
 		// スペースキーを押したらシーン終了
-		if (input.isSpaceState()) {
+		if (frameTimer<0&&input.isSpaceState()) {
 			endFlg = true;
 		}
 
@@ -43,8 +44,10 @@ public class TitleScene extends JPanel implements IScene {
 
 	@Override
 	public void draw(Graphics g) {
-		g.drawString("タイトルシーン", GameMain.WIDTH/2, GameMain.HEIGHT/2);
-		g.drawString("push SpaceKey", GameMain.WIDTH/2, GameMain.HEIGHT/2+100);
+		g.drawImage(ImageManager.getImage(ImageID.SCENE_EXPLANATION),0,0, this);
+		if (frameTimer<0) {
+			g.drawImage(ImageManager.getImage(ImageID.IMAGE_PUSH_SPACE),550,450, this);
+		}
 
 	}
 
@@ -55,14 +58,13 @@ public class TitleScene extends JPanel implements IScene {
 
 	@Override
 	public SceneID next() {
-		// 次は説明
-		return SceneID.EXPLANATION;
+		// 次はメインシーン
+		return SceneID.MAIN;
 	}
 
 	@Override
 	public void shutdown() {
 		frame.remove(this);
-
 	}
 
 }

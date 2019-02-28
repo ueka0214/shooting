@@ -1,5 +1,5 @@
 package application.module;
 
 public enum SceneID {
-	Title,Main,Result
+	TITLE,EXPLANATION,MAIN,RESULT
 }

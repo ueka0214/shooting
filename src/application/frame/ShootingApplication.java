@@ -1,6 +1,7 @@
 package application.frame;
 
 import application.module.SceneID;
+import application.scene.ExplanationScene;
 import application.scene.MainScene;
 import application.scene.SceneManager;
 import application.scene.TitleScene;
@@ -17,7 +18,7 @@ public class ShootingApplication extends GameApplication {
 		// 入力クラスの登録
 		addKeyListener(this.input);
 		// 世界のインスタンス化
-		world = new World(this,input);
+		world = new World(this);
 		// シーンマネージャのインスタンス化
 		sceneManager = new SceneManager();
 	}
@@ -29,9 +30,10 @@ public class ShootingApplication extends GameApplication {
 		world.initialize();// 世界の初期化
 		ImageManager.initialize();// 画像マネージャー初期化
 		sceneManager.initialize();// シーンマネージャの初期化
-		sceneManager.add(SceneID.Title, new TitleScene(world, input,this));// タイトルシーンの追加
-		sceneManager.add(SceneID.Main, new MainScene(world, input,this));// タイトルシーンの追加
-		sceneManager.change(SceneID.Title);// タイトルシーンに設定
+		sceneManager.add(SceneID.TITLE, new TitleScene(world, input,this));// タイトルシーンの追加
+		sceneManager.add(SceneID.EXPLANATION, new ExplanationScene(world, input,this));// 説明シーンの追加
+		sceneManager.add(SceneID.MAIN, new MainScene(world, input,this));// メインシーンの追加
+		sceneManager.change(SceneID.TITLE);// タイトルシーンに設定
 		add(sceneManager);// 描画コンポーネントにシーンマネージャを追加
 		setVisible(true);// 描画の開始
 

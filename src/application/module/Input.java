@@ -5,31 +5,31 @@ import java.awt.event.KeyListener;
 
 public class Input implements KeyListener {
 
-	private boolean up = false; // 上方向の入力
-	private boolean down = false; // 下方向の入力
-	private boolean left = false; // 左方向の入力
-	private boolean right = false; // 右方向の入力
-	private boolean space = false; // スペースキーの入力
+	private boolean currentUp = false; // 上方向の入力
+	private boolean currentDown = false; // 下方向の入力
+	private boolean currentLeft = false; // 左方向の入力
+	private boolean currentRight = false; // 右方向の入力
+	private boolean currentSpace = false; // スペースキーの入力
 	private boolean esc = false;// エスケープキーの入力
 
-	public boolean isUp() {
-		return up;
+	public boolean isUpState() {
+		return currentUp;
 	}
 
-	public boolean isDown() {
-		return down;
+	public boolean isDownState() {
+		return currentDown;
 	}
 
-	public boolean isLeft() {
-		return left;
+	public boolean isLeftState() {
+		return currentLeft;
 	}
 
-	public boolean isRight() {
-		return right;
+	public boolean isRightState() {
+		return currentRight;
 	}
 
-	public boolean isSpace() {
-		return space;
+	public boolean isSpaceState() {
+		return currentSpace;
 	}
 
 	public boolean isEsc() {
@@ -47,19 +47,19 @@ public class Input implements KeyListener {
 		// キーが押されたかの検出
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_W:
-			up = true;
+			currentUp = true;
 			break;
 		case KeyEvent.VK_S:
-			down = true;
+			currentDown = true;
 			break;
 		case KeyEvent.VK_A:
-			left = true;
+			currentLeft = true;
 			break;
 		case KeyEvent.VK_D:
-			right = true;
+			currentRight = true;
 			break;
 		case KeyEvent.VK_SPACE:
-			space = true;
+			currentSpace = true;
 			break;
 		case KeyEvent.VK_ESCAPE:
 			esc = true;
@@ -72,19 +72,19 @@ public class Input implements KeyListener {
 		// キーが離されたかの検出
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_W:
-			up = false;
+			currentUp = false;
 			break;
 		case KeyEvent.VK_S:
-			down = false;
+			currentDown = false;
 			break;
 		case KeyEvent.VK_A:
-			left = false;
+			currentLeft = false;
 			break;
 		case KeyEvent.VK_D:
-			right = false;
+			currentRight = false;
 			break;
 		case KeyEvent.VK_SPACE:
-			space = false;
+			currentSpace = false;
 			break;
 		case KeyEvent.VK_ESCAPE:
 			esc = false;

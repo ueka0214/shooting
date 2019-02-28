@@ -53,9 +53,9 @@ public class AnimationManager {
 			row = 1;
 		}
 		// 左右入力に応じて列を切り替える
-		if(input.isLeft()) {
+		if(input.isLeftState()) {
 			col = 1;
-		}else if(input.isRight()) {
+		}else if(input.isRightState()) {
 			col = 2;
 		}else {
 			col = 0;

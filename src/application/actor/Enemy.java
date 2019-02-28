@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import application.module.ActorID;
 import application.module.BulletID;
+import application.module.ImageID;
 import application.module.ShotPattern;
 import application.module.Vector2;
 import application.world.IWorld;
@@ -21,7 +22,7 @@ public class Enemy extends Actor {
 
 	// コンストラクタ
 	public Enemy(IWorld world, Vector2 position, Vector2 velocity, BulletID id,int health) {
-		super(world, position, WIDTH, HEIGHT, ImageManager.getImage(ActorID.ACTOR_ENEMY), health);
+		super(world, position, WIDTH, HEIGHT, ImageManager.getImage(ImageID.ACTOR_ENEMY), health);
 		this.velocity = velocity;
 		pattern = new ShotPattern();
 		SHOT_DELAY = setShot(id);
